@@ -237,7 +237,9 @@ const App = {
     // 讀取 Markdown 內容並消毒渲染
     let bodyHtml = '<p>載入文章內容中...</p>';
     try {
-      const res = await fetch(post.path);
+      // 確保路徑開頭帶有 ./，解決 GitHub Pages 子目錄抓取問題
+      const fetchPath = post.path.startsWith('./') ? post.path : `./${post.path}`;
+      const res = await fetch(fetchPath);
       if (res.ok) {
         const rawMd = await res.text();
         // 移除 Front matter (開頭 --- ... ---)

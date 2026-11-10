@@ -21,26 +21,6 @@
     }
   },
   {
-    "id": "entertainment/2026-11-10-rainy-cafe-music",
-    "slug": "2026-11-10-rainy-cafe-music",
-    "title": "雨天午後的安靜播放清單",
-    "date": "2026-11-10",
-    "category": "entertainment",
-    "tags": [
-      "音樂",
-      "生活",
-      "隨筆"
-    ],
-    "summary": "下午窗外下著濛濛細雨，整理這段時間寫扣與讀書時最常循環播放的純音樂。",
-    "cover": "",
-    "path": "content/entertainment/2026-11-10-rainy-cafe-music.md",
-    "music": {
-      "title": "Rainy Afternoon Lo-Fi",
-      "artist": "Chillhop Music",
-      "url": "https://www.youtube.com/watch?v=5qap5aO4i9A"
-    }
-  },
-  {
     "id": "reflections/2026-11-10-learning-notes-instagram",
     "slug": "2026-11-10-learning-notes-instagram",
     "title": "學習與生活心得隨筆整理",
@@ -73,21 +53,6 @@
     "path": "content/works/2026-11-10-fju-freshman-platform.md"
   },
   {
-    "id": "works/2026-11-10-fju-links-hub",
-    "slug": "2026-11-10-fju-links-hub",
-    "title": "輔大連結整合網站開發紀錄",
-    "date": "2026-11-10",
-    "category": "works",
-    "tags": [
-      "網頁開發",
-      "輔大",
-      "專案作品"
-    ],
-    "summary": "為方便同學快速查找各處室系統所開發的靜態導航站，整合常用的校園連結。",
-    "cover": "",
-    "path": "content/works/2026-11-10-fju-links-hub.md"
-  },
-  {
     "id": "works/2026-11-10-gacha-snake-ranch",
     "slug": "2026-11-10-gacha-snake-ranch",
     "title": "扭蛋貪吃蛇農場小遊戲 (Gacha Snake Ranch)",
@@ -118,20 +83,5 @@
     "summary": "採用極簡淺色風格打造的校園二手書媒合平台，具備學長姊上架與學弟妹登記選購功能。",
     "cover": "",
     "path": "content/works/2026-11-10-secondhand-book.md"
-  },
-  {
-    "id": "writeup/2026-11-10-ctf-first-flag",
-    "slug": "2026-11-10-ctf-first-flag",
-    "title": "CTF 基礎隱寫術解題 Writeup",
-    "date": "2026-11-10",
-    "category": "writeup",
-    "tags": [
-      "CTF",
-      "隱寫術",
-      "資安學習"
-    ],
-    "summary": "記錄在練習題目中遇到的 PNG 圖片隱寫分析，以及使用工具還原 flag 的完整過程。",
-    "cover": "",
-    "path": "content/writeup/2026-11-10-ctf-first-flag.md"
   }
 ]

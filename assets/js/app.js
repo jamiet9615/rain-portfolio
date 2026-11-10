@@ -244,7 +244,7 @@ const App = {
       } else if (!cleanPath.startsWith('./') && !cleanPath.startsWith('http')) {
         cleanPath = './' + cleanPath;
       }
-      
+
       const res = await fetch(cleanPath);
       if (res.ok) {
         const rawMd = await res.text();
@@ -252,10 +252,17 @@ const App = {
         const cleanedMd = rawMd.replace(/^---[\s\S]*?---\s*/, '');
         bodyHtml = this.renderMarkdown(cleanedMd);
       } else {
-        bodyHtml = '<p>無法讀取文章本體內容。</p>';
+        bodyHtml = `
+          <div style="text-align: center; padding: 30px;">
+            <p>⚠️ 無法讀取文章本體內容 (HTTP ${res.status})。</p>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px;">
+              若剛發布至 GitHub Pages，請確認儲存庫根目錄包含 <code>.nojekyll</code> 檔案以防止 Jekyll 阻擋 Markdown。
+            </p>
+          </div>
+        `;
       }
     } catch (e) {
-      bodyHtml = '<p>讀取文章檔案時發生錯誤。</p>';
+      bodyHtml = '<p>讀取文章檔案時發生錯誤：' + e.message + '</p>';
     }
 
     const tagsHtml = (post.tags || []).map(t => `<span class="badge-tag badge-tag-item">#${t}</span>`).join(' ');

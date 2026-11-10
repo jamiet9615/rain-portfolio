@@ -4,7 +4,21 @@
 
 ---
 
-## [2026-11-10] 規則系統強化與真實作品資料匯入
+## [2026-11-10] 修正 GitHub Pages 404 問題與清理預設文章
+
+### 🐛 問題診斷與修復
+1. **修復文章 404 無法讀取之問題**：
+   - **根本原因**：GitHub Pages 預設會執行 Jekyll 引擎建置。當 Jekyll 遇到含有 Front Matter 的 `.md` 檔案時，會強制將其編譯為 `.html`，導致原始 `.md` 檔案消失，前端 `fetch('...md')` 出現 404。
+   - **解決方案**：在專案根目錄建立 `.nojekyll` 檔案，告知 GitHub Pages 繞過 Jekyll，純粹以靜態伺服器提供檔案。
+2. **清理初始預設文章**：
+   - 刪除初始示範文章：`content/writeup/2026-11-10-ctf-first-flag.md`、`content/entertainment/2026-11-10-rainy-cafe-music.md`、`content/works/2026-11-10-fju-links-hub.md`。
+   - 保留作者專屬之 5 篇真實作品與紀錄。
+3. **重新構建全站索引**：
+   - 執行 `scripts/build_index.py`，更新 `data/posts.json` 為純真實文章資料。
+4. **修復 Favicon 404**：
+   - 在各頁面 `<head>` 注入輕量 SVG 🌧️ 圖示，避免瀏覽器請求預設 favicon.ico 產生 404 報錯。
+5. **增強 app.js 錯誤容錯度**：
+   - 保留路徑相容性處理，並在文章讀取失敗時顯示明確的提示訊息。
 
 ### 🎯 本次升級重點（呼應「規則系統 vs Vibe Coding」作業目標）
 1. **建立雙規範手冊**：

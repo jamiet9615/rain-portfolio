@@ -237,9 +237,15 @@ const App = {
     // 讀取 Markdown 內容並消毒渲染
     let bodyHtml = '<p>載入文章內容中...</p>';
     try {
-      // 確保路徑開頭帶有 ./，解決 GitHub Pages 子目錄抓取問題
-      const fetchPath = post.path.startsWith('./') ? post.path : `./${post.path}`;
-      const res = await fetch(fetchPath);
+      // 確保路徑正確對應 GitHub Pages 子目錄或相對路徑
+      let cleanPath = post.path;
+      if (cleanPath.startsWith('/')) {
+        cleanPath = '.' + cleanPath; // 把開頭的 / 換成 ./
+      } else if (!cleanPath.startsWith('./') && !cleanPath.startsWith('http')) {
+        cleanPath = './' + cleanPath;
+      }
+      
+      const res = await fetch(cleanPath);
       if (res.ok) {
         const rawMd = await res.text();
         // 移除 Front matter (開頭 --- ... ---)

@@ -1,5 +1,26 @@
 [
   {
+    "id": "entertainment/2026-11-10-art-and-youtube",
+    "slug": "2026-11-10-art-and-youtube",
+    "title": "繪畫創作與 YouTube 頻道日常紀錄",
+    "date": "2026-11-10",
+    "category": "entertainment",
+    "tags": [
+      "繪圖",
+      "YouTube",
+      "插畫",
+      "日常創作"
+    ],
+    "summary": "記錄平時的插畫塗鴉、動態創作以及 YouTube 影片製作的點滴。",
+    "cover": "",
+    "path": "content/entertainment/2026-11-10-art-and-youtube.md",
+    "music": {
+      "title": "Daily Creative Sketching",
+      "artist": "雨",
+      "url": "https://www.youtube.com/channel/UCaJdMxJdvSP0mB2-LmcKnvA"
+    }
+  },
+  {
     "id": "entertainment/2026-11-10-rainy-cafe-music",
     "slug": "2026-11-10-rainy-cafe-music",
     "title": "雨天午後的安靜播放清單",
@@ -20,6 +41,38 @@
     }
   },
   {
+    "id": "reflections/2026-11-10-learning-notes-instagram",
+    "slug": "2026-11-10-learning-notes-instagram",
+    "title": "學習與生活心得隨筆整理",
+    "date": "2026-11-10",
+    "category": "reflections",
+    "tags": [
+      "心得",
+      "學習筆記",
+      "生活反思",
+      "Instagram"
+    ],
+    "summary": "彙整過往在社群上整理的零碎學習紀錄、上課想法與心態調適心得。",
+    "cover": "",
+    "path": "content/reflections/2026-11-10-learning-notes-instagram.md"
+  },
+  {
+    "id": "works/2026-11-10-fju-freshman-platform",
+    "slug": "2026-11-10-fju-freshman-platform",
+    "title": "輔大新生全攻略捷徑平台",
+    "date": "2026-11-10",
+    "category": "works",
+    "tags": [
+      "網頁開發",
+      "輔大",
+      "實用工具",
+      "Vercel"
+    ],
+    "summary": "整合新生專區、校園入口、選課時程甘特圖與必做清單，解決新生資訊分散的痛點。",
+    "cover": "",
+    "path": "content/works/2026-11-10-fju-freshman-platform.md"
+  },
+  {
     "id": "works/2026-11-10-fju-links-hub",
     "slug": "2026-11-10-fju-links-hub",
     "title": "輔大連結整合網站開發紀錄",
@@ -33,6 +86,38 @@
     "summary": "為方便同學快速查找各處室系統所開發的靜態導航站，整合常用的校園連結。",
     "cover": "",
     "path": "content/works/2026-11-10-fju-links-hub.md"
+  },
+  {
+    "id": "works/2026-11-10-gacha-snake-ranch",
+    "slug": "2026-11-10-gacha-snake-ranch",
+    "title": "扭蛋貪吃蛇農場小遊戲 (Gacha Snake Ranch)",
+    "date": "2026-11-10",
+    "category": "works",
+    "tags": [
+      "遊戲開發",
+      "AI Studio",
+      "趣味創作",
+      "原創"
+    ],
+    "summary": "結合 Google AI Studio 與個人創意開發的趣味小遊戲，融入扭蛋收集與經典貪吃蛇玩法。",
+    "cover": "",
+    "path": "content/works/2026-11-10-gacha-snake-ranch.md"
+  },
+  {
+    "id": "works/2026-11-10-secondhand-book",
+    "slug": "2026-11-10-secondhand-book",
+    "title": "校園二手書交易平台",
+    "date": "2026-11-10",
+    "category": "works",
+    "tags": [
+      "網頁開發",
+      "GitHub Pages",
+      "GAS",
+      "二手交易"
+    ],
+    "summary": "採用極簡淺色風格打造的校園二手書媒合平台，具備學長姊上架與學弟妹登記選購功能。",
+    "cover": "",
+    "path": "content/works/2026-11-10-secondhand-book.md"
   },
   {
     "id": "writeup/2026-11-10-ctf-first-flag",

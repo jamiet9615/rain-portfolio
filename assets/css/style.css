@@ -1,0 +1,676 @@
+/* ==========================================================================
+   雨的小天地 - 溫暖手帳風樣式表 (assets/css/style.css)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  /* 設計變數（嚴格遵守 AGENTS.md 色碼） */
+  --bg: #E4DCCC;
+  --card: #FBF7EE;
+  --ink: #2B5B76;
+  --ink-soft: #5C7A8C;
+  --pink: #F4B3C2;
+  --blue: #8ECFE3;
+  --mint: #7FCDC5;
+  --yellow: #F7E5A8;
+
+  /* 幾何與排版 */
+  --radius-card: 24px;
+  --radius-sm: 12px;
+  --border-width: 3px;
+  --shadow-journal: 5px 5px 0px rgba(43, 91, 118, 0.25);
+  --shadow-hover: 7px 7px 0px rgba(43, 91, 118, 0.35);
+  --font-sans: 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, Monaco, monospace;
+}
+
+/* 全域重置與方格紙背景 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  background-color: var(--bg);
+  /* 溫暖點點方格紙質感 */
+  background-image: 
+    radial-gradient(circle, rgba(43, 91, 118, 0.12) 1.5px, transparent 1.5px),
+    radial-gradient(circle, rgba(43, 91, 118, 0.12) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 螢光筆醒目重點 */
+mark, .highlight {
+  background: linear-gradient(transparent 55%, var(--yellow) 55%);
+  padding: 0 4px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+a:hover {
+  color: var(--ink-soft);
+}
+
+/* 容器寬度 */
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ==========================================================================
+   頂部導覽列 (Navbar)
+   ========================================================================== */
+.site-header {
+  padding: 24px 0 16px;
+  margin-bottom: 24px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--ink);
+}
+
+.brand-badge {
+  background: var(--card);
+  border: var(--border-width) solid var(--ink);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  box-shadow: 3px 3px 0px rgba(43, 91, 118, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+}
+
+.nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background-color: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: 2px 2px 0px rgba(43, 91, 118, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-pill:hover, .nav-pill.active {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px rgba(43, 91, 118, 0.3);
+}
+
+/* 分類主題色飾邊 */
+.nav-pill[data-color="blue"] { border-color: var(--ink); background: #F2F9FC; }
+.nav-pill[data-color="pink"] { border-color: var(--ink); background: #FCF4F6; }
+.nav-pill[data-color="mint"] { border-color: var(--ink); background: #F2FAF9; }
+.nav-pill[data-color="yellow"] { border-color: var(--ink); background: #FCFAF0; }
+
+/* ==========================================================================
+   手帳卡片元件 (Journal Card & Washi Tape)
+   ========================================================================== */
+.journal-card {
+  position: relative;
+  background-color: var(--card);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-journal);
+  padding: 30px;
+  margin-bottom: 32px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.journal-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* 純 CSS 紙膠帶裝飾 (Washi Tape) */
+.washi-tape {
+  position: absolute;
+  top: -12px;
+  left: 32px;
+  height: 24px;
+  width: 90px;
+  background-color: rgba(247, 229, 168, 0.85); /* 柔和黃色膠帶 */
+  border-left: 2px dashed rgba(43, 91, 118, 0.3);
+  border-right: 2px dashed rgba(43, 91, 118, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transform: rotate(-2.5deg);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.washi-tape.tape-right {
+  left: auto;
+  right: 32px;
+  background-color: rgba(244, 179, 194, 0.85); /* 粉色膠帶 */
+  transform: rotate(2deg);
+}
+
+.washi-tape.tape-mint {
+  background-color: rgba(127, 205, 197, 0.85);
+  transform: rotate(-1.5deg);
+}
+
+.washi-tape.tape-blue {
+  background-color: rgba(142, 207, 227, 0.85);
+  transform: rotate(1.8deg);
+}
+
+/* 標題與粉紅小圓點裝飾 */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 6px;
+  background-image: radial-gradient(circle, var(--pink) 3px, transparent 3px);
+  background-size: 14px 6px;
+  background-repeat: repeat-x;
+}
+
+/* ==========================================================================
+   首頁自我介紹 (About Section)
+   ========================================================================== */
+.about-box {
+  background-color: var(--card);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-card);
+  padding: 28px;
+  box-shadow: var(--shadow-journal);
+  margin-bottom: 36px;
+  position: relative;
+}
+
+.about-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.about-content {
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.about-content p {
+  margin-bottom: 12px;
+}
+
+.about-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   分類卡片網格 (Categories Grid)
+   ========================================================================== */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.category-card {
+  background-color: var(--card);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-card);
+  padding: 22px;
+  box-shadow: var(--shadow-journal);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.category-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.category-emoji {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.category-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.category-desc {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+
+.category-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding-top: 10px;
+  border-top: 1.5px dashed rgba(43, 91, 118, 0.2);
+}
+
+.post-count-badge {
+  background: var(--yellow);
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1.5px solid var(--ink);
+}
+
+/* ==========================================================================
+   文章列表 (Post List)
+   ========================================================================== */
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.post-item {
+  background-color: var(--card);
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  box-shadow: var(--shadow-journal);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.badge-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1.5px solid var(--ink);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.badge-category {
+  background-color: var(--blue);
+}
+
+.badge-tag-item {
+  background-color: var(--yellow);
+}
+
+.post-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.post-title a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.post-summary {
+  color: var(--ink);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.post-footer-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   分類頁篩選 (Tag Filters)
+   ========================================================================== */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.filter-btn {
+  background: var(--card);
+  border: 2px solid var(--ink);
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px rgba(43, 91, 118, 0.15);
+  transition: all 0.15s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background: var(--yellow);
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0px rgba(43, 91, 118, 0.25);
+}
+
+/* ==========================================================================
+   文章內頁 (Post Detail) & Markdown 樣式
+   ========================================================================== */
+.post-detail-header {
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 2px dashed rgba(43, 91, 118, 0.2);
+}
+
+.post-detail-title {
+  font-size: 1.9rem;
+  font-weight: 900;
+  line-height: 1.35;
+  margin: 12px 0;
+}
+
+/* 音樂播放區塊 */
+.music-card {
+  background: #FCF4F6;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  box-shadow: 3px 3px 0px rgba(43, 91, 118, 0.15);
+}
+
+.music-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.music-icon {
+  font-size: 1.8rem;
+}
+
+.music-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.music-artist {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.music-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border: 2px solid var(--ink);
+  background: var(--card);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 2px 2px 0px rgba(43, 91, 118, 0.2);
+}
+
+.music-link-btn:hover {
+  background: var(--pink);
+  transform: translateY(-2px);
+}
+
+/* Markdown 渲染區域排版 */
+.markdown-body {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--ink);
+}
+
+.markdown-body h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 32px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--ink);
+  display: inline-block;
+}
+
+.markdown-body h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 24px 0 12px;
+}
+
+.markdown-body p {
+  margin-bottom: 18px;
+}
+
+.markdown-body ul, .markdown-body ol {
+  margin-bottom: 18px;
+  padding-left: 28px;
+}
+
+.markdown-body li {
+  margin-bottom: 6px;
+}
+
+.markdown-body blockquote {
+  border-left: 4px solid var(--ink);
+  padding: 10px 16px;
+  margin: 20px 0;
+  background-color: #FAF4E4;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--ink);
+  font-style: normal;
+}
+
+.markdown-body pre {
+  background-color: #213C4D;
+  color: #F8F9FA;
+  padding: 18px 22px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--ink);
+  overflow-x: auto;
+  margin: 22px 0;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.markdown-body code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: #EAE3D3;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(43, 91, 118, 0.3);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  color: inherit;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--ink);
+  margin: 16px 0;
+  box-shadow: 3px 3px 0px rgba(43, 91, 118, 0.15);
+}
+
+/* 上一篇 / 下一篇導航 */
+.post-navigation {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 2px dashed rgba(43, 91, 118, 0.2);
+}
+
+.nav-post-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--card);
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 2px 2px 0px rgba(43, 91, 118, 0.2);
+}
+
+.nav-post-btn:hover {
+  background: var(--yellow);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   頁尾 (Footer)
+   ========================================================================== */
+.site-footer {
+  margin-top: auto;
+  padding: 30px 0;
+  text-align: center;
+  border-top: 2px dashed rgba(43, 91, 118, 0.25);
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.footer-stamp {
+  display: inline-block;
+  padding: 4px 16px;
+  border: 2px solid var(--ink-soft);
+  border-radius: 999px;
+  margin-top: 8px;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   響應式設計 (Mobile Friendly <= 375px)
+   ========================================================================== */
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
+
+  .site-header {
+    padding: 16px 0 12px;
+  }
+
+  .brand-logo {
+    font-size: 1.3rem;
+  }
+
+  .journal-card, .about-box {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+
+  .post-detail-title {
+    font-size: 1.5rem;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .post-navigation {
+    flex-direction: column;
+  }
+
+  .nav-post-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* 尊重使用者減少動態效果喜好 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "writeup",
+    "name": "Writeup",
+    "description": "解題、實作過程的記錄與解析",
+    "emoji": "💻",
+    "color": "blue",
+    "order": 1
+  },
+  {
+    "id": "works",
+    "name": "網站作品",
+    "description": "自己做過的網站與專案成果",
+    "emoji": "🎨",
+    "color": "pink",
+    "order": 2
+  },
+  {
+    "id": "reflections",
+    "name": "心得",
+    "description": "上課、活動、閱讀後的想法與感想",
+    "emoji": "🌱",
+    "color": "mint",
+    "order": 3
+  },
+  {
+    "id": "learning",
+    "name": "學習",
+    "description": "正在學的技術或主題的筆記與整理",
+    "emoji": "📚",
+    "color": "yellow",
+    "order": 4
+  },
+  {
+    "id": "entertainment",
+    "name": "娛樂",
+    "description": "日常生活、攝影、音樂與休閒創作",
+    "emoji": "🎧",
+    "color": "pink",
+    "order": 5
+  }
+]

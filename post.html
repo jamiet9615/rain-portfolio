@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章詳情｜雨的小天地</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+</head>
+<body>
+
+  <!-- 頂部導覽列 -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="brand-logo">
+        <a href="index.html" class="brand-badge">
+          <span>🌧️</span>
+          <span>雨的小天地</span>
+        </a>
+      </div>
+      <nav>
+        <ul id="nav-links" class="nav-links"></ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 主要內容區 -->
+  <main class="container">
+    
+    <div id="post-content">
+      <div class="journal-card" style="text-align: center; padding: 40px;">
+        <p>載入文章內容中...</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 頁尾 -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 雨的小天地 ｜ 一步一腳印的學習手帳</p>
+      <div class="footer-stamp">純靜態手帳風 ‧ 部署於 GitHub Pages</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      App.initPost();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章分類｜雨的小天地</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+</head>
+<body>
+
+  <!-- 頂部導覽列 -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="brand-logo">
+        <a href="index.html" class="brand-badge">
+          <span>🌧️</span>
+          <span>雨的小天地</span>
+        </a>
+      </div>
+      <nav>
+        <ul id="nav-links" class="nav-links"></ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 主要內容區 -->
+  <main class="container">
+    
+    <!-- 分類頂部資訊卡片 -->
+    <header class="journal-card">
+      <div class="washi-tape tape-mint"></div>
+      <h1 id="category-title" class="post-title" style="font-size: 1.8rem; margin-bottom: 8px;">載入分類中...</h1>
+      <p id="category-desc" style="color: var(--ink-soft); font-size: 1.05rem;">請稍候...</p>
+    </header>
+
+    <!-- 標籤篩選列 -->
+    <section id="tag-filter-bar" class="filter-bar">
+      <!-- 由 app.js 動態渲染 -->
+    </section>
+
+    <!-- 文章列表 -->
+    <section>
+      <div id="category-posts-list" class="posts-list">
+        <!-- 由 app.js 動態渲染 -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 頁尾 -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 雨的小天地 ｜ 一步一腳印的學習手帳</p>
+      <div class="footer-stamp">純靜態手帳風 ‧ 部署於 GitHub Pages</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      App.initCategory();
+    });
+  </script>
+</body>
+</html>
